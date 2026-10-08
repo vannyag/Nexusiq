@@ -4,8 +4,6 @@
 
 NexusIQ ingests a deliberately corrupted sales log, cleans it with a **Bronze → Silver → Gold medallion pipeline** in DuckDB, trains a **LightGBM demand forecaster** and an **XGBoost churn classifier**, and serves everything through a **Streamlit** app with executive KPIs, predictions, and a safe SQL playground.
 
-🔗 **Live demo:** _add your Streamlit link here_
-
 ---
 
 ## ✨ Features
