@@ -118,25 +118,6 @@ bash run_all.sh
 
 > The app also builds the data and models automatically on first launch if they're missing, which is what makes one-click cloud deployment work.
 
-### Docker
-
-```bash
-docker build -t nexusiq .
-docker run -p 8501:8501 nexusiq
-```
-
----
-
-## ☁️ Deployment
-
-**Streamlit Community Cloud** (recommended):
-1. Push the repo to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io) → **New app**
-3. Select the repo, branch `main`, main file `app.py`, then **Deploy**
-
-The first load generates the data and trains the models (about 1–2 minutes). If the build fails on LightGBM, add a `packages.txt` containing `libgomp1`.
-
----
 
 ## 📁 Project structure
 
@@ -170,22 +151,7 @@ The generator is seeded, so results are reproducible.
 
 ---
 
-## ⚠️ Limitations and next steps
-
-- The demand model learns from days when a store *did* order a SKU, so it predicts expected quantity **given an order**, not the probability of ordering. A two-stage model (order probability × quantity) would be the natural next step.
-- Demand features are calendar-only; adding lag and rolling-average features would likely improve accuracy.
-- Churn labels depend on a single cutoff; multiple rolling cutoffs would give more training data and a more robust model.
-- The pipeline fully rebuilds on each run; incremental loading would suit larger datasets.
-- Add automated tests for the validation rules.
-
----
-
 ## 🛠️ Tech stack
 
 Python · DuckDB · pandas · LightGBM · XGBoost · scikit-learn · Streamlit · Plotly · Docker
 
----
-
-## 📄 License
-
-MIT, or choose your own: add a `LICENSE` file to the repo.
